@@ -1,0 +1,45 @@
+.matchList {
+    background: white;
+    width: 10em;
+    text-align: center;
+    border-radius: 5px;
+    height: min-content;
+}
+
+.name {
+    background-color: var(--fs-red);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0.5em 0 0.5em 0;
+    color: white;
+}
+
+.match {
+    padding: 0.5em;
+    color: black;
+}
+
+.match:active {
+    box-shadow: 0 0 10px 0 black !important;
+    cursor: pointer;
+}
+
+.match:hover {
+    box-shadow: 0 0 5px 0 black;
+    cursor: pointer;
+}
+
+.match.select{
+    border-left: 0.3em var(--fs-red) solid;
+    padding-left: 0.2em;
+}
+
+.match.select:hover{
+    box-shadow: none;
+    cursor: initial;
+}
+
+.match.select:active{
+    box-shadow: none!important;
+    cursor: initial;
+}

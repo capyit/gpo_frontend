@@ -1,0 +1,84 @@
+.page{
+    color: white
+}
+
+.overview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.matchList{
+    display: flex;
+    width: 25em;
+    justify-content: space-between;
+    background: none;
+}
+
+.match{
+    width: 50%;
+    border-left: 7px solid var(--fs-red);
+    padding-left: 3em;
+    background-color: color(srgb 1 1 1);
+    color: black;
+    min-height: 20em;
+}
+
+.matchTable{
+    margin-top: 1em;
+    border-top: 7px solid var(--fs-red);
+    margin-left: -3em;
+    padding: 1em;
+}
+
+.defRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+.entryRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+.entry{
+    width: 33%;
+}
+
+.entry input{
+    text-align: center;
+    width: 3em
+}
+
+.def{
+    width: 33%;
+}
+
+.def.last{
+    width: 5em;
+}
+
+@media (max-width: 970px) {
+    .overview{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .match{
+        width: 90%;
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    .matchTable{
+        margin-left: -2em;
+    }
+}

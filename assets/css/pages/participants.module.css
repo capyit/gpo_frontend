@@ -1,0 +1,50 @@
+.page{
+
+}
+
+
+.overview{
+    width: 70%;
+    border-left: 7px solid var(--fs-red);
+    padding-left: 3em;
+    background-color: color(srgb 1 1 1);
+    color: black;
+    min-height: 20em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overview h1{
+    padding-top: 0.5em;
+}
+
+.participantsTable{
+    margin-top: 1em;
+    border-top: 7px solid var(--fs-red);
+    margin-left: -3em;
+    padding: 1em;
+}
+
+.defRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+.entryRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+.entry{
+    width: 33%;
+}
+
+.def{
+    width: 33%;
+}

@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--fs-red);
+    box-shadow: 0 0 20px 4px rgb(0, 0, 0);
+    margin-bottom: 2em;
+    padding-left: 0.5em;
+    justify-content: space-between;
+}
+
+.navbar .title {
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+}
+
+.navbar .logo {
+    max-height: 6vh;
+}
+
+
+.navbar .fslogo {
+    max-height: 8vh;
+}

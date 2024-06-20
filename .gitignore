@@ -1,0 +1,7 @@
+.DS_Store
+.git
+.idea
+node_modules/
+yarn.lock
+.parcel-cache/
+dist/
