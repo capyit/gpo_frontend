@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var m = require("mithril");
-var navbar_1 = require("../components/navbar");
-var api_1 = require("../helpers/api");
-var login_module_css_1 = require("../../assets/css/pages/login.module.css");
-var _a = require("hyperscript-helpers")(m), div = _a.div, button = _a.button, form = _a.form, label = _a.label, input = _a.input, h1 = _a.h1, br = _a.br;
-var page = {
+const m = require("mithril");
+const navbar_1 = require("../components/navbar");
+const api_1 = require("../helpers/api");
+const login_module_css_1 = require("../../assets/css/pages/login.module.css");
+const { div, button, form, label, input, h1, br } = require("hyperscript-helpers")(m);
+const page = {
     view: function () {
         return div({ class: login_module_css_1.default.page }, [
             m(navbar_1.default),

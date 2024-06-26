@@ -34,9 +34,6 @@ export default async function checkLogin() {
       return { status: xhr_1.status, body: xhr_1.responseText };
     },
   });
-  if (result.body != "logged_in") {
-    m.route.set("/login");
-    return false;
-  }
-  return true;
+  return result.body == "logged_in";
+
 }

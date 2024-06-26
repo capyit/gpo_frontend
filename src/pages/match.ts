@@ -2,11 +2,13 @@ import * as m from "mithril";
 import NaviBar from "../components/navbar";
 import css from "../../assets/css/pages/match.module.css";
 import Matchlist from "../components/matchlist";
+import checkLogin from "../helpers/api";
 
 const {div, br, h1, input, form, button} = require("hyperscript-helpers")(m);
 
 
 const page = () => {
+    let logged_in = false;
     const Round = {
         data: [],
         load: async function (id: number) {
@@ -90,6 +92,7 @@ const page = () => {
                         {
                             key: m.route.param("id"),
                             async oninit() {
+                                logged_in = await checkLogin();
                                 m.redraw();
                                 Match.data = [];
                                 await Match.loadlist(Number.parseInt(m.route.param("id")));
@@ -210,7 +213,9 @@ const page = () => {
                                             ]),
                                         ]),
                                         br(),
-                                        button("Submit"),
+                                        !logged_in
+                                            ? null
+                                            : button("Submit"),
                                     ),
                                 ]),
                             ],

@@ -11,9 +11,7 @@ const page = {
     page.logged_in = await checkLogin();
   },
   view() {
-    return !page.logged_in
-      ? null
-      : div('.'+css.page,[
+    return div('.'+css.page,[
           m(NavBar),
           div("." + css.views, [
             div(
@@ -34,7 +32,9 @@ const page = {
               },
               "Räumeansicht",
             ),
-              div(
+              !page.logged_in
+                  ? null
+                  : div(
                   "." + css.view,
                   {
                       onclick: function () {
