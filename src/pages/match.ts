@@ -82,6 +82,25 @@ const page = () => {
                 });
         },
     };
+    const ParticipantCheckedIn = {
+        data: [],
+        loadlist: async function (id: number) {
+            ParticipantCheckedIn.data = [];
+            return m
+                .request({
+                    method: "GET",
+                    url: (await fetch('/env.json').then(response => {
+                        return response.json()
+                    }).then((data) => {
+                        return data.api_url
+                    })) + "/api/participant/" + id,
+                    withCredentials: true,
+                })
+                .then(function (result: any) {
+                    ParticipantCheckedIn.data[id] = result["checkedIn"];
+                });
+        },
+    };
     return {
         view() {
             return div("." + css.page, [
@@ -163,6 +182,9 @@ const page = () => {
                                                             await ParticipantName.loadlist(
                                                                 Number.parseInt(k),
                                                             );
+                                                            await ParticipantCheckedIn.loadlist(
+                                                                Number.parseInt(k),
+                                                            );
                                                             let nextMatch =
                                                                 Match.data["nextMatches"][
                                                                     Match.data["participants"][k]
@@ -182,11 +204,12 @@ const page = () => {
                                                     [
                                                         div(
                                                             "." + css.entry,
-                                                            m(
+                                                            ParticipantCheckedIn.data.at(Number.parseInt(k)) ?
+                                                                m(
                                                                 m.route.Link,
                                                                 {href: "/participant/" + k},
                                                                 ParticipantName.data.at(Number.parseInt(k)),
-                                                            ),
+                                                            ):ParticipantName.data.at(Number.parseInt(k)),
                                                         ),
                                                         div(
                                                             "." + css.entry,

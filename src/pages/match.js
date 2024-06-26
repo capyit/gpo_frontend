@@ -81,6 +81,25 @@ const page = () => {
             });
         },
     };
+    const ParticipantCheckedIn = {
+        data: [],
+        loadlist: async function (id) {
+            ParticipantCheckedIn.data = [];
+            return m
+                .request({
+                method: "GET",
+                url: (await fetch('/env.json').then(response => {
+                    return response.json();
+                }).then((data) => {
+                    return data.api_url;
+                })) + "/api/participant/" + id,
+                withCredentials: true,
+            })
+                .then(function (result) {
+                ParticipantCheckedIn.data[id] = result["checkedIn"];
+            });
+        },
+    };
     return {
         view() {
             return div("." + match_module_css_1.default.page, [
@@ -143,6 +162,7 @@ const page = () => {
                                         div("." + match_module_css_1.default.entryRow, {
                                             async oninit() {
                                                 await ParticipantName.loadlist(Number.parseInt(k));
+                                                await ParticipantCheckedIn.loadlist(Number.parseInt(k));
                                                 let nextMatch = Match.data["nextMatches"][Match.data["participants"][k]];
                                                 if (nextMatch != 0 && nextMatch != null) {
                                                     await NextMatch.loadlist(Number.parseInt(nextMatch), Number.parseInt(k));
@@ -152,7 +172,8 @@ const page = () => {
                                                 }
                                             },
                                         }, [
-                                            div("." + match_module_css_1.default.entry, m(m.route.Link, { href: "/participant/" + k }, ParticipantName.data.at(Number.parseInt(k)))),
+                                            div("." + match_module_css_1.default.entry, ParticipantCheckedIn.data.at(Number.parseInt(k)) ?
+                                                m(m.route.Link, { href: "/participant/" + k }, ParticipantName.data.at(Number.parseInt(k))) : ParticipantName.data.at(Number.parseInt(k))),
                                             div("." + match_module_css_1.default.entry, input({ placeholder: Match.data["participants"][k], id: k })),
                                             div("." + match_module_css_1.default.entry, NextMatch.data.at(Number.parseInt(k)) == null
                                                 ? "keins"
