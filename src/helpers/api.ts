@@ -1,11 +1,11 @@
 import * as m from "mithril";
-
-
 export async function processLogin(e: Event) {
   e.preventDefault();
   const result = await m.request({
     method: "POST",
-    url: process.env.API_URL.concat("/api/login"),
+    url: (await fetch('env.json').then(response => {
+      return response.json()
+    }).then((data) => {return data.api_url})) + "/api/login",
     withCredentials: true,
     config: (xhr_1) => {
       xhr_1.setRequestHeader("X-Requested-With", "XMLHttpRequest");
@@ -26,7 +26,9 @@ export async function processLogin(e: Event) {
 export default async function checkLogin() {
   const result = await m.request({
     method: "GET",
-    url: process.env.API_URL + "/api/checklogin",
+    url: await fetch('env.json').then(response => {
+      return response.json()
+    }).then((data) => {return data.api_url}) + "/api/checklogin",
     withCredentials: true,
     extract: function (xhr_1) {
       return { status: xhr_1.status, body: xhr_1.responseText };

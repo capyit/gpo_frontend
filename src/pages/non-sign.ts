@@ -7,21 +7,25 @@ const { div, input, h1, button, form } = require("hyperscript-helpers")(m);
 const page = () => {
   const Participants = {
     list: [],
-    load: function () {
+    load: async function () {
       return m
-        .request({
-          method: "GET",
-          url: window.location.origin + "/api/participants/check",
-          withCredentials: true,
-        })
-        .then(
-          function (result: any) {
-            Participants.list = result;
-          },
-          function (error) {
-            console.log(error);
-          },
-        );
+          .request({
+            method: "GET",
+            url: await fetch('env.json').then(response => {
+              return response.json()
+            }).then((data) => {
+              return data.api_url
+            }) + "/api/participants/check",
+            withCredentials: true,
+          })
+          .then(
+              function (result: any) {
+                Participants.list = result;
+              },
+              function (error) {
+                console.log(error);
+              },
+          );
     },
   };
   return {

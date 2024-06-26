@@ -8,21 +8,25 @@ const { div } = require("hyperscript-helpers")(m);
 const page = () => {
   const Room = {
     list: [],
-    load: function () {
+    load: async function () {
       return m
-        .request({
-          method: "GET",
-          url: window.location.origin + "/api/rooms",
-          withCredentials: true,
-        })
-        .then(
-          function (result: any) {
-            Room.list = result;
-          },
-          function (error) {
-            console.log(error);
-          },
-        );
+          .request({
+            method: "GET",
+            url: await fetch('env.json').then(response => {
+              return response.json()
+            }).then((data) => {
+              return data.api_url
+            }) + "/api/rooms",
+            withCredentials: true,
+          })
+          .then(
+              function (result: any) {
+                Room.list = result;
+              },
+              function (error) {
+                console.log(error);
+              },
+          );
     },
   };
   return {

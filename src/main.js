@@ -11,9 +11,7 @@ var participant_1 = require("./pages/participant");
 var non_sign_1 = require("./pages/non-sign");
 var participants_1 = require("./pages/participants");
 require("../assets/css/main.css");
-var env_json_1 = require("../assets/env.json");
 require("normalize.css");
-var api_URL = env_json_1.default.api_url;
 var el = document.getElementById("content");
 m.route(el, "/home", {
     "/home": home_1.default,

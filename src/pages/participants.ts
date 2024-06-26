@@ -8,22 +8,26 @@ const page = () => {
   const Participants = {
     checked_in: [],
     checked_out: [],
-    load: function () {
+    load: async function () {
       return m
-        .request({
-          method: "GET",
-          url: window.location.origin + "/api/participants",
-          withCredentials: true,
-        })
-        .then(
-          function (result: any) {
-            Participants.checked_in = result.filter(item => item.checkedIn == true);
-            Participants.checked_out = result.filter(item => item.checkedIn == false);
-          },
-          function (error) {
-            console.log(error);
-          },
-        );
+          .request({
+            method: "GET",
+            url: await fetch('env.json').then(response => {
+              return response.json()
+            }).then((data) => {
+              return data.api_url
+            }) + "/api/participants",
+            withCredentials: true,
+          })
+          .then(
+              function (result: any) {
+                Participants.checked_in = result.filter(item => item.checkedIn == true);
+                Participants.checked_out = result.filter(item => item.checkedIn == false);
+              },
+              function (error) {
+                console.log(error);
+              },
+          );
     },
   };
   return {

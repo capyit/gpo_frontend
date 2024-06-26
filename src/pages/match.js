@@ -41,61 +41,130 @@ var navbar_1 = require("../components/navbar");
 var match_module_css_1 = require("../../assets/css/pages/match.module.css");
 var matchlist_1 = require("../components/matchlist");
 var _a = require("hyperscript-helpers")(m), div = _a.div, br = _a.br, h1 = _a.h1, input = _a.input, form = _a.form, button = _a.button;
+var api_url = await fetch('env.json').then(function (response) {
+    return response.json();
+}).then(function (data) {
+    return data.api_url;
+});
 var page = function () {
     var Round = {
         data: [],
         load: function (id) {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/round/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                Round.data = result;
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/round/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                Round.data = result;
+                            })];
+                    }
+                });
             });
         },
     };
     var Match = {
         data: [],
         loadlist: function (id) {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/match/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                Match.data = result;
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/match/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                Match.data = result;
+                            })];
+                    }
+                });
             });
         },
     };
     var NextMatch = {
         data: [],
         loadlist: function (id, index) {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/match/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                NextMatch.data[index] = result.name;
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/match/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                NextMatch.data[index] = result.name;
+                            })];
+                    }
+                });
             });
         },
     };
     var ParticipantName = {
         data: [],
         loadlist: function (id) {
-            ParticipantName.data = [];
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/participant/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                ParticipantName.data[id] = result["name"];
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            ParticipantName.data = [];
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/participant/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                ParticipantName.data[id] = result["name"];
+                            })];
+                    }
+                });
             });
         },
     };

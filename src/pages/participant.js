@@ -44,14 +44,30 @@ var page = function () {
     var Participant = {
         data: [],
         loadlist: function (id) {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/participant/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                Participant.data = result;
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/participant/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                Participant.data = result;
+                            })];
+                    }
+                });
             });
         },
     };
@@ -60,16 +76,32 @@ var page = function () {
         rank: [],
         name: [],
         load: function (id) {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/match/" + id,
-                withCredentials: true,
-            })
-                .then(function (result) {
-                Match.time[id] = result["time"];
-                Match.name[id] = result["name"];
-                Match.rank[id] = result["participants"][m.route.param("id")];
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/match/" + id,
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                Match.time[id] = result["time"];
+                                Match.name[id] = result["name"];
+                                Match.rank[id] = result["participants"][m.route.param("id")];
+                            })];
+                    }
+                });
             });
         },
     };

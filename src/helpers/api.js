@@ -40,28 +40,34 @@ exports.processLogin = void 0;
 var m = require("mithril");
 function processLogin(e) {
     return __awaiter(this, void 0, void 0, function () {
-        var result;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var result, _a, _b;
+        var _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
                     e.preventDefault();
-                    return [4 /*yield*/, m.request({
-                            method: "POST",
-                            url: process.env.API_URL.concat("/api/login"),
-                            withCredentials: true,
-                            config: function (xhr_1) {
+                    _b = (_a = m).request;
+                    _c = {
+                        method: "POST"
+                    };
+                    return [4 /*yield*/, fetch('env.json').then(function (response) {
+                            return response.json();
+                        }).then(function (data) { return data.api_url; })];
+                case 1: return [4 /*yield*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/login",
+                            _c.withCredentials = true,
+                            _c.config = function (xhr_1) {
                                 xhr_1.setRequestHeader("X-Requested-With", "XMLHttpRequest");
                             },
-                            body: {
+                            _c.body = {
                                 username: e.target[0].value,
                                 password: e.target[1].value,
                             },
-                            extract: function (xhr_3) {
+                            _c.extract = function (xhr_3) {
                                 return { status: xhr_3.status, body: xhr_3.responseText };
                             },
-                        })];
-                case 1:
-                    result = _a.sent();
+                            _c)])];
+                case 2:
+                    result = _d.sent();
                     if (result.body == "logged_in") {
                         m.route.set("/");
                     }
@@ -73,19 +79,26 @@ function processLogin(e) {
 exports.processLogin = processLogin;
 function checkLogin() {
     return __awaiter(this, void 0, void 0, function () {
-        var result;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, m.request({
-                        method: "GET",
-                        url: process.env.API_URL + "/api/checklogin",
-                        withCredentials: true,
-                        extract: function (xhr_1) {
-                            return { status: xhr_1.status, body: xhr_1.responseText };
-                        },
-                    })];
-                case 1:
-                    result = _a.sent();
+        var result, _a, _b;
+        var _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
+                case 0:
+                    _b = (_a = m).request;
+                    _c = {
+                        method: "GET"
+                    };
+                    return [4 /*yield*/, fetch('env.json').then(function (response) {
+                            return response.json();
+                        }).then(function (data) { return data.api_url; })];
+                case 1: return [4 /*yield*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/checklogin",
+                            _c.withCredentials = true,
+                            _c.extract = function (xhr_1) {
+                                return { status: xhr_1.status, body: xhr_1.responseText };
+                            },
+                            _c)])];
+                case 2:
+                    result = _d.sent();
                     if (result.body != "logged_in") {
                         m.route.set("/login");
                         return [2 /*return*/, false];

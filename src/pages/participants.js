@@ -45,17 +45,33 @@ var page = function () {
         checked_in: [],
         checked_out: [],
         load: function () {
-            return m
-                .request({
-                method: "GET",
-                url: window.location.origin + "/api/participants",
-                withCredentials: true,
-            })
-                .then(function (result) {
-                Participants.checked_in = result.filter(function (item) { return item.checkedIn == true; });
-                Participants.checked_out = result.filter(function (item) { return item.checkedIn == false; });
-            }, function (error) {
-                console.log(error);
+            return __awaiter(this, void 0, void 0, function () {
+                var _a, _b;
+                var _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0:
+                            _b = (_a = m)
+                                .request;
+                            _c = {
+                                method: "GET"
+                            };
+                            return [4 /*yield*/, fetch('env.json').then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.api_url;
+                                })];
+                        case 1: return [2 /*return*/, _b.apply(_a, [(_c.url = (_d.sent()) + "/api/participants",
+                                    _c.withCredentials = true,
+                                    _c)])
+                                .then(function (result) {
+                                Participants.checked_in = result.filter(function (item) { return item.checkedIn == true; });
+                                Participants.checked_out = result.filter(function (item) { return item.checkedIn == false; });
+                            }, function (error) {
+                                console.log(error);
+                            })];
+                    }
+                });
             });
         },
     };

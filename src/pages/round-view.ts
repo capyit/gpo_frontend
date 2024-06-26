@@ -8,11 +8,15 @@ const { div } = require("hyperscript-helpers")(m);
 const page = () => {
     const Round = {
         list: [],
-        load: function () {
+        load: async function () {
             return m
                 .request({
                     method: "GET",
-                    url: window.location.origin + "/api/rounds",
+                    url: await fetch('env.json').then(response => {
+                        return response.json()
+                    }).then((data) => {
+                        return data.api_url
+                    }) + "/api/rounds",
                     withCredentials: true,
                 })
                 .then(

@@ -8,34 +8,42 @@ const { div, br, h1, h2 } = require("hyperscript-helpers")(m);
 const page = () => {
   const Participant = {
     data: [],
-    loadlist: function (id: number) {
-      return m
-        .request({
-          method: "GET",
-          url: window.location.origin + "/api/participant/" + id,
-          withCredentials: true,
-        })
-        .then(function (result: any) {
-          Participant.data = result;
-        });
+    loadlist: async function (id: number) {
+        return m
+            .request({
+                method: "GET",
+                url: await fetch('env.json').then(response => {
+                    return response.json()
+                }).then((data) => {
+                    return data.api_url
+                }) + "/api/participant/" + id,
+                withCredentials: true,
+            })
+            .then(function (result: any) {
+                Participant.data = result;
+            });
     },
   };
   const Match = {
     time: [],
     rank: [],
     name: [],
-    load: function (id: number) {
-      return m
-          .request({
-            method: "GET",
-            url: window.location.origin + "/api/match/" + id,
-            withCredentials: true,
-          })
-          .then(function (result: any) {
-            Match.time[id] = result["time"];
-            Match.name[id] = result["name"];
-            Match.rank[id] = result["participants"][ m.route.param("id")];
-          });
+    load: async function (id: number) {
+        return m
+            .request({
+                method: "GET",
+                url: await fetch('env.json').then(response => {
+                    return response.json()
+                }).then((data) => {
+                    return data.api_url
+                }) + "/api/match/" + id,
+                withCredentials: true,
+            })
+            .then(function (result: any) {
+                Match.time[id] = result["time"];
+                Match.name[id] = result["name"];
+                Match.rank[id] = result["participants"][m.route.param("id")];
+            });
     },
   };
   return {

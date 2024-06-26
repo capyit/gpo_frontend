@@ -12,9 +12,8 @@
     "typescript": "~5.4.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "parcel src/index.html --no-cache",
+    "build": "parcel build src/index.html --no-cache"
   },
   "browser": {
     "fs": false
@@ -22,10 +21,15 @@
   "devDependencies": {
     "parcel": "^2.12.0",
     "parcel-namer-hashless": "^1.0.6",
+    "parcel-namer-rewrite": "^2.10.3-rc.2",
     "typescript-plugin-css-modules": "^5.1.0"
   },
-  "parcel-namer-hashless": {
-    "include": [".json$"],
-    "mode": "all"
+  "parcel-namer-rewrite": {
+    "chain": "@parcel/namer-default",
+    "hashing": "always",
+    "disable": false,
+    "rules": {
+      "env.json": "env.json"
+    }
   }
 }

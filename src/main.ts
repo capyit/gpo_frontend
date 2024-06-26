@@ -9,11 +9,9 @@ import ParticipantView from "./pages/participant"
 import NonSignView from "./pages/non-sign"
 import ParticipantsView from "./pages/participants"
 import "../assets/css/main.css";
-import Environment from "../assets/env.json";
 
 require("normalize.css");
 
-const api_URL = Environment.api_url
 
 const el = document.getElementById("content")
 m.route(el, "/home", {

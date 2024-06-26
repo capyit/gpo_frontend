@@ -17,7 +17,11 @@ const component: m.ClosureComponent<Attrs> = () => {
       Matches.data = await m.request({
         method: "GET",
         url:
-            window.location.origin + "/api/" + objectType + "/" + id + "/matches",
+            (await fetch('/env.json').then(response => {
+              return response.json()
+            }).then((data) => {
+              return data.api_url
+            })) + "/api/" + objectType + "/" + id + "/matches",
         withCredentials: true,
       });
     }
@@ -28,7 +32,11 @@ const component: m.ClosureComponent<Attrs> = () => {
       Object.data = await m.request({
         method: "GET",
         url:
-            window.location.origin + "/api/" + objectType + "/" + id,
+            (await fetch('/env.json').then(response => {
+              return response.json()
+            }).then((data) => {
+              return data.api_url
+            })) + "/api/" + objectType + "/" + id,
         withCredentials: true,
       });
     }
