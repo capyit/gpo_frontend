@@ -148,7 +148,11 @@ const page = () => {
                                                     }
                                                     await m.request({
                                                         method: "PUT",
-                                                        url: window.location.origin.concat(
+                                                        url: (await fetch('/env.json').then(response => {
+                                                            return response.json()
+                                                        }).then((data) => {
+                                                            return data.api_url
+                                                        })).concat(
                                                             "/api/match/" +
                                                             Number.parseInt(m.route.param("id")) +
                                                             "/participant/" +
