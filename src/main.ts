@@ -9,6 +9,7 @@ import ParticipantView from "./pages/participant"
 import NonSignView from "./pages/non-sign"
 import ParticipantsView from "./pages/participants"
 import "../assets/css/main.css";
+import "../assets/env.json";
 
 require("normalize.css");
 

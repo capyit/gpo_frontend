@@ -29,7 +29,7 @@
     "hashing": "always",
     "disable": false,
     "rules": {
-      "env.json": "env.json"
+      "(.*).json": "$1.json"
     }
   }
 }

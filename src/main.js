@@ -1,18 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var m = require("mithril");
-var home_1 = require("./pages/home");
-var room_view_1 = require("./pages/room-view");
-var round_view_1 = require("./pages/round-view");
-var login_1 = require("./pages/login");
-var admin_1 = require("./pages/admin");
-var match_1 = require("./pages/match");
-var participant_1 = require("./pages/participant");
-var non_sign_1 = require("./pages/non-sign");
-var participants_1 = require("./pages/participants");
+const m = require("mithril");
+const home_1 = require("./pages/home");
+const room_view_1 = require("./pages/room-view");
+const round_view_1 = require("./pages/round-view");
+const login_1 = require("./pages/login");
+const admin_1 = require("./pages/admin");
+const match_1 = require("./pages/match");
+const participant_1 = require("./pages/participant");
+const non_sign_1 = require("./pages/non-sign");
+const participants_1 = require("./pages/participants");
 require("../assets/css/main.css");
+require("../assets/env.json");
 require("normalize.css");
-var el = document.getElementById("content");
+const el = document.getElementById("content");
 m.route(el, "/home", {
     "/home": home_1.default,
     "/raeume": room_view_1.default,
