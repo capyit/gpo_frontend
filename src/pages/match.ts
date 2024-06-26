@@ -152,14 +152,10 @@ const page = () => {
                                                             return response.json()
                                                         }).then((data) => {
                                                             return data.api_url
-                                                        })).concat(
-                                                            "/api/match/" +
-                                                            Number.parseInt(m.route.param("id")) +
-                                                            "/participant/" +
-                                                            e.target[i].id,
-                                                            "/" +
-                                                            e.target[i].value,
-                                                        ),
+                                                        })) + "/api/match/" + Number.parseInt(m.route.param("id")) +
+                                                            "/participant/" + e.target[i].id +
+                                                            "/" + e.target[i].value
+                                                        ,
                                                         withCredentials: true,
                                                         config: (xhr_1) => {
                                                             xhr_1.setRequestHeader(
