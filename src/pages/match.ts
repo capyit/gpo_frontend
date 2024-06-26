@@ -142,7 +142,7 @@ const page = () => {
                                     form(
                                         {
                                             async onsubmit(e: Event) {
-                                                for (let i = 0; i < Match.data["competitorAmount"]; i++) {
+                                                for (let i = 0; i < Object.keys(Match.data["participants"]).length ; i++) {
                                                     if (e.target[i].value == "") {
                                                         continue
                                                     }
@@ -164,7 +164,7 @@ const page = () => {
                                                             );
                                                         },
                                                     });
-                                                    m.redraw()
+                                                    window.location.reload();
                                                 }
                                             },
                                         },
