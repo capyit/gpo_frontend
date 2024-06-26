@@ -24,6 +24,7 @@ RUN apk update \
     && apk add lighttpd \
     && rm -rf /var/cache/apk/*
 
+COPY assets/env.json /var/www/localhost/htdocs
 COPY --from=build /usr/src/app/dist /var/www/localhost/htdocs
 COPY lighttpd.conf /temp/
 RUN cat /temp/lighttpd.conf >> /etc/lighttpd/lighttpd.conf
