@@ -164,8 +164,8 @@ const page = () => {
                                                             );
                                                         },
                                                     });
-                                                    window.location.reload();
                                                 }
+                                                window.location.reload();
                                             },
                                         },
                                         div("." + css.matchTable, [
