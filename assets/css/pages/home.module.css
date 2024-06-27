@@ -9,8 +9,8 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     margin: 1em;
     margin-bottom: 20px;
-    font-size: 10vw;
-    width: 80svw;
+    font-size: 4vw;
+    width: 30svw;
     text-align: center;
 }
 
@@ -22,4 +22,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+@media only screen and (max-width: 600px) {
+    .view {
+        width: 80svw;
+        font-size: 10vw;
+    }
 }
