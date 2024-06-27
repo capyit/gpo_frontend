@@ -56,7 +56,11 @@ const page = () => {
                         await m.request({
                           method: "PUT",
                           url:
-                            window.location.origin +
+                              await fetch('env.json').then(response => {
+                                  return response.json()
+                              }).then((data) => {
+                                  return data.api_url
+                              }) +
                             "/api/participant/" +
                             Number.parseInt(k["id"]),
                           withCredentials: true,

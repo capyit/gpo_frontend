@@ -15,7 +15,7 @@ const navbar = {
   view() {
     return div("." + css.navbar, [
       a({ href: "#!/" }, img("." + css.logo, { src: require("/assets/img/icon.png") })),
-      img("." + css.fslogo, { src: require("/assets/img/FS_logo.jpg") }),
+      img("." + css.fslogo, { src: require("/assets/img/FS_logo.png") }),
     ]);
   },
 };
