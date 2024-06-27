@@ -45,7 +45,8 @@
     cursor: initial;
 }
 
-@media only screen and (max-width: 600px) {.matchList {
+@media only screen and (max-width: 600px) {
+    .matchList {
     width: 80svw;
-}
+    }
 }

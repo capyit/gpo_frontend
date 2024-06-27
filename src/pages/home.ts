@@ -50,7 +50,7 @@ const page = {
                           m.route.set("/participants");
                       },
                   },
-                  "Teilnehmer",
+                  "Teilnehmende",
               ),
           ]),
         ]);

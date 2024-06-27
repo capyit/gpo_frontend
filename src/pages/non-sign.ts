@@ -41,7 +41,7 @@ const page = () => {
           div("." + css.participantsTable, [
             div("." + css.defRow, [
               div("." + css.def, "Startnummer"),
-              div("." + css.def, "Teilnehmer"),
+              div("." + css.def, "Teilnehmende"),
               div("." + css.def, "Anmeldung"),
             ]),
             Participants.list.map((k) => {
