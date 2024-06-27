@@ -13,6 +13,7 @@ import "../assets/env.json";
 
 require("normalize.css");
 
+m.route.prefix = ''
 
 const el = document.getElementById("content")
 m.route(el, "/home", {
