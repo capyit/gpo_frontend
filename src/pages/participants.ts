@@ -39,7 +39,7 @@ const page = () => {
       return div("." + css.page, [
         m(NaviBar),
         div("." + css.overview, [
-          h1("Teilnehmer"),
+          h1("Teilnehmende"),
           div("." + css.participantsTable, [
             div("." + css.defRow, [
               div("." + css.def, "Startnummer"),
