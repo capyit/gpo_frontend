@@ -234,11 +234,10 @@ const page = () => {
                                                     ],
                                                 ),
                                             ]),
+                                            !logged_in
+                                                ? null
+                                                : button("Submit"),
                                         ]),
-                                        br(),
-                                        !logged_in
-                                            ? null
-                                            : button("Submit"),
                                     ),
                                 ]),
                             ],

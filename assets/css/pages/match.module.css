@@ -18,12 +18,23 @@
 }
 
 .match{
-    width: 50%;
+    width: 45svw;
     border-left: 7px solid var(--fs-red);
     padding-left: 3em;
     background-color: color(srgb 1 1 1);
     color: black;
-    min-height: 20em;
+}
+
+.match button{
+    text-align: center;
+    background-color: var(--fs-red);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    align-content: center;
+    width: 70%;
+    margin: 1em;
+    padding: .5em;
 }
 
 .matchTable{
@@ -31,6 +42,7 @@
     border-top: 7px solid var(--fs-red);
     margin-left: -3em;
     padding: 1em;
+    text-align: center;
 }
 
 .defRow{
@@ -73,7 +85,7 @@
     }
 
     .match{
-        width: 90%;
+        width: 80svw;
         padding-left: 2em;
         margin-bottom: 1em;
     }
