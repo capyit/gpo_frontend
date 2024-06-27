@@ -29,6 +29,7 @@ const page = () => {
     };
     const Match = {
         data: [],
+        room: "",
         loadlist: async function (id: number) {
             return m
                 .request({
@@ -82,6 +83,25 @@ const page = () => {
                 });
         },
     };
+    const RoomName = {
+        data: [],
+        load: async function (id: number) {
+            RoomName.data = [];
+            return m
+                .request({
+                    method: "GET",
+                    url: (await fetch('/env.json').then(response => {
+                        return response.json()
+                    }).then((data) => {
+                        return data.api_url
+                    })) + "/api/room/" + id,
+                    withCredentials: true,
+                })
+                .then(function (result: any) {
+                    RoomName.data[id] = result["name"];
+                });
+        },
+    };
     const ParticipantCheckedIn = {
         data: [],
         loadlist: async function (id: number) {
@@ -116,6 +136,7 @@ const page = () => {
                                 Match.data = [];
                                 await Match.loadlist(Number.parseInt(m.route.param("id")));
                                 await Round.load(Match.data["round"]);
+                                await RoomName.load(Match.data["room"])
                             },
                         },
                         0 == Match.data.length
@@ -139,6 +160,7 @@ const page = () => {
                                     "Startzeit: " +
                                     new Date(Match.data["time"]).toTimeString().slice(0, 5),
                                     br(),
+                                    "Raum: "+RoomName.data[Match.data["room"]],
                                     form(
                                         {
                                             async onsubmit(e: Event) {
@@ -170,7 +192,7 @@ const page = () => {
                                         },
                                         div("." + css.matchTable, [
                                             div("." + css.defRow, [
-                                                div("." + css.def, "Teilnehmer"),
+                                                div("." + css.def, "Teilnehmende"),
                                                 div("." + css.def, "Rang"),
                                                 div("." + css.def, "Nächstes Match"),
                                             ]),
@@ -208,8 +230,8 @@ const page = () => {
                                                                 m(
                                                                 m.route.Link,
                                                                 {href: "/participant/" + k},
-                                                                ParticipantName.data.at(Number.parseInt(k)),
-                                                            ):ParticipantName.data.at(Number.parseInt(k)),
+                                                                    Number.parseInt(k)+" "+ParticipantName.data.at(Number.parseInt(k)),
+                                                            ):Number.parseInt(k)+" "+ParticipantName.data.at(Number.parseInt(k)),
                                                         ),
                                                         div(
                                                             "." + css.entry,

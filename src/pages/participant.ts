@@ -24,10 +24,30 @@ const page = () => {
             });
     },
   };
+    const RoomName = {
+        data: [],
+        load: async function (id: number) {
+            RoomName.data = [];
+            return m
+                .request({
+                    method: "GET",
+                    url: (await fetch('/env.json').then(response => {
+                        return response.json()
+                    }).then((data) => {
+                        return data.api_url
+                    })) + "/api/room/" + id,
+                    withCredentials: true,
+                })
+                .then(function (result: any) {
+                    RoomName.data[id] = result["name"];
+                });
+        },
+    };
   const Match = {
     time: [],
     rank: [],
     name: [],
+    room: [],
     load: async function (id: number) {
         return m
             .request({
@@ -43,6 +63,7 @@ const page = () => {
                 Match.time[id] = result["time"];
                 Match.name[id] = result["name"];
                 Match.rank[id] = result["participants"][m.route.param("id")];
+                Match.room[id] = result["room"];
             });
     },
   };
@@ -73,6 +94,7 @@ const page = () => {
                     div("." + css.matchTable, [
                       div("." + css.defRow, [
                         div("." + css.def, "Match"),
+                          div("." + css.def, "Raum"),
                         div("." + css.def, "Startzeit"),
                         div("." + css.def, "Rang"),
                       ]),
@@ -82,6 +104,7 @@ const page = () => {
                             {
                               async oninit() {
                                 await Match.load(k);
+                                await RoomName.load(Match.room.at(k))
                               },
                             },
                             [
@@ -91,6 +114,7 @@ const page = () => {
                                       {href: "/match/"+k},
                                       Match.name.at(k))
                               ),
+                              div("." + css.entry, RoomName.data[Match.room.at(k)]),
                               div("." + css.entry, new Date(Match.time.at(k)).toTimeString().slice(0, 5)),
                               div("." + css.entry, Match.rank.at(k)),
                             ],
