@@ -17,7 +17,7 @@ const component: m.ClosureComponent<Attrs> = () => {
       Matches.data = await m.request({
         method: "GET",
         url:
-            (await fetch('/env.json').then(response => {
+            (await fetch(window.location.origin+'/env.json').then(response => {
               return response.json()
             }).then((data) => {
               return data.api_url
@@ -32,7 +32,7 @@ const component: m.ClosureComponent<Attrs> = () => {
       Object.data = await m.request({
         method: "GET",
         url:
-            (await fetch('/env.json').then(response => {
+            (await fetch(window.location.origin+'/env.json').then(response => {
               return response.json()
             }).then((data) => {
               return data.api_url

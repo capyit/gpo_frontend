@@ -2,8 +2,31 @@
 
 }
 
+.content{
+    display: flex;
+}
+
+table{
+    text-align: center;
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 2svw;
+    width: 45svw;
+}
+
+thead{
+    font-size: 3svw;
+}
+
+th, td{
+    padding: 0.5em 0;
+}
+
 .view {
     padding: 20px;
+    align-content: center;
+    height: 1.5em;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
@@ -20,8 +43,30 @@
 
 .views {
     display: flex;
+    width: 50svw;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+@media only screen and (max-width: 800px) {
+    .content {
+        flex-wrap: wrap;
+    }
+
+    table{
+        width: 80svw;
+        font-size: 3svw;
+        margin: 3em auto;
+    }
+
+
+    thead{
+        font-size: 5svw;
+    }
+
+    .views{
+        width: 100svw;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -29,4 +74,5 @@
         width: 80svw;
         font-size: 10vw;
     }
+
 }

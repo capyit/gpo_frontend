@@ -13,6 +13,7 @@ const participants_1 = require("./pages/participants");
 require("../assets/css/main.css");
 require("../assets/env.json");
 require("normalize.css");
+m.route.prefix = '';
 const el = document.getElementById("content");
 m.route(el, "/home", {
     "/home": home_1.default,

@@ -3,7 +3,7 @@ export async function processLogin(e: Event) {
   e.preventDefault();
   const result = await m.request({
     method: "POST",
-    url: (await fetch('env.json').then(response => {
+    url: (await fetch(window.location.origin+'/env.json').then(response => {
       return response.json()
     }).then((data) => {return data.api_url})) + "/api/login",
     withCredentials: true,
@@ -26,7 +26,7 @@ export async function processLogin(e: Event) {
 export default async function checkLogin() {
   const result = await m.request({
     method: "GET",
-    url: await fetch('env.json').then(response => {
+    url: await fetch(window.location.origin+'/env.json').then(response => {
       return response.json()
     }).then((data) => {return data.api_url}) + "/api/checklogin",
     withCredentials: true,

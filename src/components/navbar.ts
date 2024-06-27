@@ -14,7 +14,7 @@ const { div, a, img } = require("hyperscript-helpers")(m);
 const navbar = {
   view() {
     return div("." + css.navbar, [
-      a({ href: "#!/" }, img("." + css.logo, { src: require("/assets/img/icon.png") })),
+      a({ href: "/" }, img("." + css.logo, { src: require("/assets/img/icon.png") })),
       img("." + css.fslogo, { src: require("/assets/img/FS_logo.png") }),
     ]);
   },

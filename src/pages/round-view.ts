@@ -12,7 +12,7 @@ const page = () => {
             return m
                 .request({
                     method: "GET",
-                    url: await fetch('env.json').then(response => {
+                    url: await fetch(window.location.origin+'/env.json').then(response => {
                         return response.json()
                     }).then((data) => {
                         return data.api_url
