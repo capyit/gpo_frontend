@@ -42,7 +42,9 @@
 }
 
 .entry{
-    width: 33%;
+    width: 100%;
+    align-content: center;
+    margin-bottom: 0.5em;
 }
 
 .def{
